@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="todo-app">
+      <div class="heading">
+        <h1>Todo App</h1>
+      </div>
+      <div class="todo-input-box">
+        <input type="text" id="content" placeholder="Add your new todo" />
+        <span class="add-todo">Add</span>
+      </div>
+
+      <div class="data"></div>
+    </div>
+
+    <div class="footer">
+      <p>You have <span class="count">0</span> pending tasks</p>
+      <span class="clear">Clear All</span>
+    </div>
+    <span
+      class="clear footer logout"
+      style="display: flex; justify-content: center; font-weight: 900"
+      >Log Out</span
+    >
+    <script type="module" src="./home.js"></script>
+  </body>
+</html>

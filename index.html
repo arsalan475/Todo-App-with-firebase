@@ -3,31 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>Beautiful Form</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .form-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
+
   <body>
-    <div class="todo-app">
-      <div class="heading">
-        <h1>Todo App</h1>
+    <div class="container">
+      <div class="form-container">
+        <h2 class="text-center mb-4">sign in Form</h2>
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit
+          </button>
+        </form>
       </div>
-      <div class="todo-input-box">
-        <input type="text" id="content" placeholder="Add your new todo" />
-        <span class="add-todo">Add</span>
-      </div>
-
-      <div class="data"></div>
     </div>
 
-    <div class="footer">
-      <p>You have <span class="count">0</span> pending tasks</p>
-      <span class="clear">Clear All</span>
-    </div>
-    <span
-      class="clear footer logout"
-      style="display: flex; justify-content: center; font-weight: 900"
-      >Log Out</span
-    >
-    <script type="module" src="./home.js"></script>
+    <script type="module" src="./sigin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
