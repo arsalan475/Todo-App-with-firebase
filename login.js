@@ -8,14 +8,14 @@ const form = document.querySelector("form");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    console.log(uid);
-  } else {
-    window.location = "index.html";
-  }
-});
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     const uid = user.uid;
+//     console.log(uid);
+//   } else {
+//     window.location = "index.html";
+//   }
+// });
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();

@@ -7,13 +7,13 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <title>Awesome Login Form</title>
+    <title>Beautiful Form</title>
     <style>
       body {
         background-color: #f8f9fa;
       }
 
-      .login-container {
+      .form-container {
         max-width: 400px;
         margin: 50px auto;
         padding: 20px;
@@ -21,35 +21,24 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-
-      .login-container h2 {
-        text-align: center;
-      }
-
-      .login-container form {
-        margin-top: 20px;
-      }
-
-      .login-container .form-group {
-        margin-bottom: 20px;
-      }
-
-      .login-container .btn-login {
-        background-color: #007bff;
-        color: #fff;
-      }
-
-      .login-container .btn-login:hover {
-        background-color: #0056b3;
-      }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <div class="login-container">
-        <h2>Login</h2>
+      <div class="form-container">
+        <h2 class="text-center mb-4">sign in Form</h2>
         <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -70,13 +59,14 @@
               required
             />
           </div>
-          <button type="submit" class="btn btn-primary btn-block btn-login">
-            Login
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit
           </button>
         </form>
       </div>
     </div>
-    <script type="module" src="./login.js"></script>
+
+    <script type="module" src="./sigin.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

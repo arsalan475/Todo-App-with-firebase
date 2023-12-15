@@ -1,0 +1,167 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+   background-image: linear-gradient(to bottom,rgb(71, 196, 238),rgb(0, 136, 255));
+   background-repeat: no-repeat;
+   height: 91vh;
+}
+
+.heading{
+    margin-bottom: 1rem;
+}
+
+.todo-app{
+    display: flex;
+    flex-direction: column;
+    border-radius: 1px;
+    background-color: white;
+    width: 25rem;
+    height: 30rem;
+    margin:4rem auto;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 1.2rem ;
+    margin-bottom: 0;
+}
+
+.todos{
+    margin-top:.4rem
+}
+
+.todo-input-box{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+ #content{
+    width: 79%;
+    height:2.2rem;
+    border:none;
+    padding-left:.3rem;
+   background-color: none;
+    font-weight: 600;
+    color: #333;
+    border-radius: 3px;
+    outline:1px solid rgba(95, 95, 110, 0.331) ;
+ }
+
+ .add-todo{
+    height: 2.1rem;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    background-color:rgb(74, 86, 250); 
+    font-weight: 800;
+    color: white;
+ }
+
+ .add-todo:active{
+   background-color:rgba(74, 86, 250, 0.906);
+   transform:scale(.97)
+ }
+
+ .todos{
+    width: 100%;
+    display: flex;
+    height: 2.3rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(174, 85, 252, 0.121);
+    position: relative;
+    border-radius: 3px;
+ }
+ .todo-content{
+    width: 100%;
+    height: 100%;
+
+    padding: .5rem .6rem;
+    border: none;
+
+    font-weight: 700;
+    color: #333333ba;
+    text-transform: capitalize;
+    
+ }
+
+ .todo-content:focus{
+    border:none;
+    outline:2px solid rgb(195, 115, 66) ;
+    text-decoration: none;
+ }
+
+ .btns{
+    width: 20%;
+    gap: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 900;
+ }
+
+ .date{
+   position:absolute;
+   left: 3%;
+   display: none;
+   bottom: 0;
+   font-size: .6rem;
+ }
+
+ .btns span{
+   background-color: rgb(255, 158, 13);
+   width: 49%;
+   display: none;
+   justify-content: center;
+ }
+
+ .btns span:active{
+   background-color:rgba(255, 158, 13, 0.936);
+   transform:scale(.97)
+ }
+
+ span{
+    cursor: pointer;
+    border-radius: 3px;
+ }
+
+
+
+ .active{
+   border: none;
+   outline: 2px solid rgb(255, 13, 0);
+   text-decoration: line-through;
+ }
+
+ .footer{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: white;
+   margin: 0 auto;
+   width: 25rem;
+   padding: .5rem 1.5rem 1rem 1.3rem;
+   border-radius: 1px;
+ }
+
+ .clear{
+   background-color:rgb(74, 86, 250); 
+   padding: .2rem .5rem;
+   color: white;
+   
+ }
+
+ .clear:active{
+   background-color:rgba(74, 86, 250, 0.906);
+   transform:scale(.97);
+ }
