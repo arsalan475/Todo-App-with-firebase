@@ -25,7 +25,7 @@ form.addEventListener("submit", function (event) {
 function loginAccount() {
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(function (responsed) {
-      window.location = "./home.html";
+      window.location = "./index.html";
     })
     .catch(function (err) {
       console.log(err);
