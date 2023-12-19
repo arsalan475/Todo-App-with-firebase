@@ -8,17 +8,31 @@ import {
   collection,
   addDoc,
   getDocs,
+  orderBy,
+  query,
+  where,
+  Timestamp,
+  doc,
+  updateDoc,
+  deleteField,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { auth } from "./config.js";
 
+let uid;
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    const uid = user.uid;
+    console.log(user);
+    uid = user.uid;
     console.log(uid);
+    showData(user);
   } else {
-    window.location = "login.html";
+    window.location = "./login.html";
   }
 });
+
+// Remove the 'capital' field from the document
 
 const db = getFirestore(app);
 
@@ -35,55 +49,59 @@ const footer = document.querySelector(".footer");
 const count = document.querySelector(".count");
 let todos = [];
 let disabled = true;
-let index;
 
-async function showData() {
-  const querySnapshot = await getDocs(collection(db, "users"));
+async function showData(user) {
+  const q = query(
+    collection(db, "users"),
+    where("uid", "==", user.uid),
+    orderBy("timeStamp", "desc")
+  );
+
+  const querySnapshot = await getDocs(q);
+
   querySnapshot.forEach((doc) => {
-    console.dir(`${doc.id} => ${doc.data()}`);
-    todos.push(doc.data());
+    todos.push({ ...doc.data(), docId: doc.id });
     console.log(todos);
   });
   todos.forEach((el) => {
-    creatingHtml(el.title);
+    creatingHtml(el.title, el.docId);
   });
   count.textContent = todos.length;
 }
 
-showData();
-
 async function addTodos(e) {
   if (!inputBox.value) return;
-  creatingHtml(inputBox.value);
 
-  if (e.key === "Enter" || e.type === "click") {
-    try {
-      const docRef = await addDoc(collection(db, "users"), {
-        title: inputBox.value,
-        uid: auth.currentUser.uid,
-      });
+  try {
+    const docRef = await addDoc(collection(db, "users"), {
+      title: inputBox.value,
+      uid: auth.currentUser.uid,
+      timeStamp: Timestamp.fromDate(new Date()),
+    });
 
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-
-    inputBox.value = "";
-
-    console.log(todos.length);
+    creatingHtml(inputBox.value, docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
+
+  inputBox.value = "";
+
+  // console.log(todos.length);
 }
 
-function creatingHtml(el, i) {
+function creatingHtml(el, docId) {
   let html = `<div class="todos">
-    <input type="text" value="${el}" class="todo-content" disabled/>
+    <input type="text" value="${el}" id=${docId} class="todo-content" disabled/>
     <div class='btns'>
     <span class="edit" title="Edit todo">+</span>
     <span class="dlt" title="Delete todo">-</span>
     </div>
   </div>
   `;
+
   document.querySelector(".data").insertAdjacentHTML("afterbegin", html);
+  count.textContent = document.querySelectorAll(".todos").length;
 }
 
 function toggleBtns(e, displayValue) {
@@ -99,13 +117,27 @@ function toggleBtns(e, displayValue) {
   }
 }
 
-function deletTodo(e) {
+async function deletTodo(e) {
   if (!e.target.classList.contains("dlt")) return;
   const todo = e.target.closest(".todos").firstElementChild;
   e.target.closest(".todos").remove();
+  console.log("runned");
+  const userRef = doc(db, "users", todo.id);
+
+  // const deleted = await updateDoc(userRef, {
+  //   title: deleteField(),
+  //   uid: deleteField(),
+  //   timeStamp: deleteField(),
+  // }).then((res) => {
+  //   count.textContent = document.querySelectorAll(".todos").length;
+  // });
+
+  await deleteDoc(userRef).then((res) => {
+    count.textContent = document.querySelectorAll(".todos").length;
+  });
 }
 
-function editTodo(e) {
+async function editTodo(e) {
   if (!e.target.classList.contains("edit")) return;
   const todo = e.target.closest(".todos").firstElementChild;
   if (disabled) {
@@ -117,6 +149,11 @@ function editTodo(e) {
   if (!disabled) {
     todo.disabled = true;
     todo.classList.remove("active");
+    await updateDoc(doc(db, "users", todo.id), {
+      title: todo.value,
+    }).then((updated) => {
+      console.log(updated);
+    });
   }
   disabled = !disabled;
 }
@@ -147,3 +184,7 @@ logout.addEventListener("click", () => {
       console.log(error);
     });
 });
+
+// Your Firebase configuration
+
+// Reference to the Firestore database
