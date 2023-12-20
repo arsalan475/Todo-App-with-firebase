@@ -4,6 +4,7 @@ import { auth, createEmailPassword } from "./config.js";
 const form = document.querySelector("form");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
+const name = document.querySelector("#name");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -11,9 +12,9 @@ form.addEventListener("submit", function (event) {
 });
 
 function createAccount() {
-  createEmailPassword(auth, email.value, password.value).then(function (
-    responsed
-  ) {
-    window.location = "./login.html";
-  });
+  createEmailPassword(auth, email.value, password.value, name.value).then(
+    function (responsed) {
+      window.location = "./login.html";
+    }
+  );
 }

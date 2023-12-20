@@ -7,7 +7,8 @@
 body{
    background-image: linear-gradient(to bottom,rgb(71, 196, 238),rgb(0, 136, 255));
    background-repeat: no-repeat;
-   height: 91vh;
+   height: 100vh;
+   font-size: 62.2%;
 }
 
 .heading{
@@ -19,8 +20,8 @@ body{
     flex-direction: column;
     border-radius: 1px;
     background-color: white;
-    width: 25rem;
-    height: 30rem;
+    width: 50vmin;
+    height: 60vmin;
     margin:4rem auto;
     overflow: hidden;
     overflow-y: auto;
@@ -38,6 +39,7 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    gap: .5rem;
 }
 
  #content{
@@ -46,6 +48,7 @@ body{
     border:none;
     padding-left:.3rem;
    background-color: none;
+   
     font-weight: 600;
     color: #333;
     border-radius: 3px;
@@ -61,6 +64,7 @@ body{
     background-color:rgb(74, 86, 250); 
     font-weight: 800;
     color: white;
+    font-size: 1rem;
  }
 
  .add-todo:active{
@@ -106,7 +110,7 @@ body{
     position: absolute;
     right: 0;
     color: white;
-    font-size: 1.8rem;
+    
     font-weight: 900;
  }
 
@@ -149,7 +153,8 @@ body{
    align-items: center;
    background-color: white;
    margin: 0 auto;
-   width: 25rem;
+   width: 50vmin;
+   font-size: 1.2vmax;
    padding: .5rem 1.5rem 1rem 1.3rem;
    border-radius: 1px;
  }
@@ -164,4 +169,45 @@ body{
  .clear:active{
    background-color:rgba(74, 86, 250, 0.906);
    transform:scale(.97);
+ }
+
+
+  
+ @media only screen and (max-width: 600px) {
+
+  .todo-input-box{
+    flex-direction: column;
+  
+    gap: .5rem;
+   
+}
+
+#content{
+  width: 100%;
+  height:1.8rem;
+  font-size: .7rem;
+}
+
+.add-todo{
+  height: 1.5rem;
+  width: 100%;
+  
+}
+
+.footer{
+  padding: .1rem 0;
+ 
+  flex-direction: column;
+  font-size: .8rem;
+
+  
+}
+
+.clear{
+  background-color:rgb(255, 59, 59); 
+ 
+  width: 100%;
+  text-align: center;
+  font-size: .8rem;
+}
  }
